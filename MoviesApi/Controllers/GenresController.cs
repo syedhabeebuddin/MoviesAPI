@@ -36,7 +36,7 @@ namespace MoviesApi.Controllers
             var response = await _genreManager.GetByIdAsync(id);
             if (response == null)
             {
-                return BadRequest("");
+                return BadRequest("Couldn't Retrieve Genre");
             }
             return Ok(response);
         }
