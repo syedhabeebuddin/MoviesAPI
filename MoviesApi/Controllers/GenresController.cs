@@ -24,6 +24,11 @@ namespace MoviesApi.Controllers
             _genreManager = genreManager;
         }
 
+        /// <summary>
+        /// Retrieve A Genre By Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{id}")]
         public async Task<IActionResult> Get(string id)

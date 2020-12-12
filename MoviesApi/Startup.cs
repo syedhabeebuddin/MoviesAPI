@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using MoviesApi.Configurations;
 using MoviesApi.Core.Configurations;
 using MoviesApi.Database.Configurations;
@@ -32,6 +33,16 @@ namespace MoviesApi
             services.Configure<MongoDBSettings>(Configuration.GetSection("MongoDBSettings"));
             services.AddDatabaseWrapper();
             services.AddApiServices();
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "MoviesAPI",
+                    Version = "v1"
+                });
+                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +58,12 @@ namespace MoviesApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MoviesApi");
+            });
 
             app.UseEndpoints(endpoints =>
             {
