@@ -2,11 +2,6 @@
 using MoviesApi.Core.Models;
 using MoviesApi.Database.Contracts;
 using MoviesApi.Database.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoviesApi.Database.Configurations
 {
