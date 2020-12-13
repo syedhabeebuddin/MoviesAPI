@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MoviesApi.Core.Common
+﻿namespace MoviesApi.Core.Common
 {
     public class Result
     {
@@ -32,8 +26,7 @@ namespace MoviesApi.Core.Common
 
         public int StatusCode { get; set; }
 
-        public bool IsSuccess { get; set; }
-        //public string AddtionalInfo { get; set; }
+        public bool IsSuccess { get; set; }        
         public string Error { get; set; }
     }
 }
