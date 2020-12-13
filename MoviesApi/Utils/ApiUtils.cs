@@ -1,10 +1,5 @@
 ﻿using MongoDB.Driver;
 using MoviesApi.Core.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoviesApi.Utils
 {

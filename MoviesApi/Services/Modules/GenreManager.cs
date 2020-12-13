@@ -7,10 +7,7 @@ using MoviesApi.Services.Contracts;
 using MoviesApi.Utils;
 using MoviesApi.ViewModels.Request;
 using MoviesApi.ViewModels.Response;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoviesApi.Services.Modules
@@ -32,9 +29,6 @@ namespace MoviesApi.Services.Modules
 
         public async Task<IEnumerable<GenreResponse>> GetAllAsync()
         {
-            //var scanFilter = Builders<ScanEngineDoc>.Filter;
-            //var scanIdFilter = scanFilter.And(scanFilter.Eq(x => x.ScanId, scanId));
-
             var result = await _genreCollection.GetAllAsync();
             //return result != null ? new GenreResponse(result) : null;
             return null;

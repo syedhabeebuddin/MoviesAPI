@@ -4,13 +4,11 @@ using MoviesApi.Core.Common;
 using MoviesApi.Core.Models;
 using MoviesApi.Database.Contracts;
 using MoviesApi.Services.Contracts;
+using MoviesApi.Utils;
 using MoviesApi.ViewModels.Request;
 using MoviesApi.ViewModels.Response;
-using MoviesApi.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoviesApi.Services.Modules
