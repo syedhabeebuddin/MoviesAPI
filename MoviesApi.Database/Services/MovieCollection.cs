@@ -46,7 +46,10 @@ namespace MoviesApi.Database.Services
 
         public async Task<IEnumerable<Movie>> GetAllAsync()
         {
-            return (IEnumerable<Movie>)await _movieCollection.FindAsync(new BsonDocument());
+            var result = await _movieCollection.Find(_ => true).ToListAsync();
+            return result;
+
+            //return (IEnumerable<Movie>)await _movieCollection.FindAsync(new BsonDocument());
             //return fields == null ? await _genreCollection.Find(filters).ToListAsync() : await _genreCollection.Find(filters).Project<Genre>(fields).ToListAsync();
         }
         public async Task<Movie> Search(FilterDefinition<Movie> filters)

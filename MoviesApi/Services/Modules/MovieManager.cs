@@ -32,9 +32,25 @@ namespace MoviesApi.Services.Modules
             return result != null ? new MovieResponse(result) : null;
         }
 
-        public Task<IEnumerable<GenreResponse>> GetAllAsync()
+        public async Task<IEnumerable<MovieResponse>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var result = await _movieCollection.GetAllAsync();            
+            return GetMovieResponse(result);
+        }
+
+        private IEnumerable<MovieResponse> GetMovieResponse(IEnumerable<Movie> result)
+        {
+            List<MovieResponse> movieResponses = null;
+            if (!(result is null))
+            {
+                movieResponses = new List<MovieResponse>();
+                foreach (Movie move in result)
+                {
+                    movieResponses.Add(new MovieResponse(move));
+                }
+            }
+
+            return movieResponses;
         }
 
         public async Task<Result> InsertAsync(AddMovieRequest request)
@@ -68,7 +84,8 @@ namespace MoviesApi.Services.Modules
                           .Update
                           .Set("Description", updateRequest.Description)
                           .Set("ReleaseDate", updateRequest.ReleaseDate)
-                          .Set("Rating", updateRequest.Rating);
+                          .Set("Rating", updateRequest.Rating)
+                          .Set("Duration", updateRequest.Duration);
 
             var updateResult = await _movieCollection.UpdatePartialAsync(updatesFilter, updates);
 

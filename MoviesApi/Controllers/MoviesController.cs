@@ -26,7 +26,7 @@ namespace MoviesApi.Controllers
             var response = await _movieManager.GetByIdAsync(id);
             if (response == null)
             {
-                return BadRequest("");
+                return BadRequest("Couldn't retrieve Movie");
             }
             return Ok(response);
         }
@@ -38,7 +38,7 @@ namespace MoviesApi.Controllers
             var response = await _movieManager.GetAllAsync();
             if (response == null)
             {
-                return BadRequest("");
+                return BadRequest("Couldn't retrieve Movies");
             }
             return Ok(response);
         }
