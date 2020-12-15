@@ -48,7 +48,7 @@ namespace MoviesApi.Controllers
             var response = await _genreManager.GetAllAsync();
             if (response == null)
             {
-                return BadRequest("");
+                return BadRequest("Couldn't Retrieve Genres");
             }
             return Ok(response);
         }

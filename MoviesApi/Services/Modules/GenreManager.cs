@@ -7,6 +7,7 @@ using MoviesApi.Services.Contracts;
 using MoviesApi.Utils;
 using MoviesApi.ViewModels.Request;
 using MoviesApi.ViewModels.Response;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -31,8 +32,10 @@ namespace MoviesApi.Services.Modules
         {
             var result = await _genreCollection.GetAllAsync();
             //return result != null ? new GenreResponse(result) : null;
-            return null;
+            return GetGenreResponse(result);
         }
+
+        
 
         public async Task<GenreResponse> SearchAsync(SearchRequest searchRequest)
         {
@@ -97,6 +100,21 @@ namespace MoviesApi.Services.Modules
                 return new Result(false, "Genre Doesn't Exists", StatusCodes.Status416RangeNotSatisfiable);
             }
             return new Result(true, string.Empty);
+        }
+
+        private IEnumerable<GenreResponse> GetGenreResponse(IEnumerable<Genre> result)
+        {
+            List<GenreResponse> genreResponses = null;
+            if (!(result is null))
+            {
+                genreResponses = new List<GenreResponse>();
+                foreach (Genre genre in result)
+                {
+                    genreResponses.Add(new GenreResponse(genre));
+                }
+            }
+
+            return genreResponses;
         }
     }
 }
